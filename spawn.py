@@ -11,7 +11,7 @@ def buildDB():
 	code = '''\
 #!/usr/bin/python
 import MySQLdb
-con = MySQLdb.connect(host="localhost", user="root", passwd="nittmysql")
+con = MySQLdb.connect(host="localhost", user="user", passwd="user")
 cursor = con.cursor()
 sql = 'CREATE DATABASE IF NOT EXISTS d4'
 cursor.execute(sql)
@@ -32,7 +32,7 @@ def addTime():
 #!/usr/bin/python
 import MySQLdb
 import time
-con = MySQLdb.connect(host="localhost", user="root", passwd="nittmysql")
+con = MySQLdb.connect(host="localhost", user="user", passwd="user")
 cursor = con.cursor()
 sql = "USE d4"
 cursor.execute(sql)
@@ -49,4 +49,3 @@ con.commit()
 writeCron = 'echo' + ' "*/10 * * * * /usr/bin/python ' + location + 'addTime.py" '
 command = '(crontab -l;' + writeCron +')| crontab -'
 os.system(command)
-addTime()
